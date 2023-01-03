@@ -28,7 +28,7 @@ public class QuestionsPage {
 	@FindBy(xpath = "(//span[@class='question-type'])[4]")
 	private WebElement  OpenEndedSingleEntries;
 
-	@FindBy(xpath  = "//span[normalize-space()='Open Ended Multiple Entries']")
+	@FindBy(xpath  = "//span[text()='Open Ended Multiple Entries']")
 	private WebElement OpenEndedMultipleEntries;
 
 	@FindBy(xpath  = "(//span[@class='question-type'])[6]")
@@ -181,17 +181,28 @@ public class QuestionsPage {
 	 */
 	
 	public void OpenEndedMultipleEntry() throws Throwable
-	{
+	{		
+		try
+		{
+			OpenEndedMultipleEntries.sendKeys();
+		}
+		catch(Exception e) {
+			
+			OpenEndedMultipleEntries.click();
+			String q5 = pLib.getpropertyfile("Q5");
+			Question.sendKeys(q5);
+			Option2.sendKeys("Ankit");
+			AUTOSET.click();
+			Save.click();
+			Option2.clear();
+		}
 		
-		OpenEndedMultipleEntries.click();
-		String q5 = pLib.getpropertyfile("Q5");
-		Question.sendKeys(q5);
-		Option2.sendKeys("Ankit");
-		AUTOSET.click();
-		Save.click();
-		Option2.clear();
 	}
 	
+	/**
+	 * This method is used to create the question in Single choice Module 
+	 * @throws Throwable
+	 */
 	public void SingleChoice() throws Throwable
 	{
 		singleChoice.click();

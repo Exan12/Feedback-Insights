@@ -9,7 +9,16 @@ public class HomePage {
 
 	// DECLARATION
 	@FindBy(xpath = "//button[text()='Create Survey']")
-	private WebElement createsurvey;
+	private WebElement CreateSurvey;
+	
+	@FindBy(xpath = "//span[text()='Manoj']")
+	private WebElement ProfileName;
+	
+	@FindBy(linkText = "Logout")
+	private WebElement LogoutButton;
+	
+	@FindBy(xpath = "//button[text()='Confirm']")
+	private WebElement ConfirmButton;
 
 	// INITIALIZATION
 	public HomePage (WebDriver driver)
@@ -19,16 +28,38 @@ public class HomePage {
 
 	// UTILIZATION
 	public WebElement getCreatesurvey() {
-		return createsurvey;
+		return CreateSurvey;
+	}
+	
+	public WebElement getProfileName() {
+		return ProfileName;
 	}
 
-	// BUSINESS LIBRARY LOGICS
+	public WebElement getLogoutButton() {
+		return LogoutButton;
+	}
+
+	public WebElement getConfirmButton() {
+		return ConfirmButton;
+	}
+
+// BUSINESS LIBRARY LOGICS
 	/**
 	 * This method is used to click on create survey button
 	 */
 	public void CreateSurvey()
 	{
-		createsurvey.click();
+		CreateSurvey.click();
+	}
+	
+	/**
+	 * This method is used to Signout from the application
+	 */
+	public void LogoutFromApp()
+	{
+		ProfileName.click();
+		LogoutButton.click();
+		ConfirmButton.click();
 	}
 
 }
